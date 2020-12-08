@@ -152,16 +152,20 @@ select {
     padding: 7px 7px;
     border: 1px solid grey;
     cursor: pointer;
+    background-color: #f5f5f5;
+    border-radius: 4px;   
 }
 
 .submitButton {
     border: none;
+    border: 1px solid grey;
     background-color: #f5f5f5;
     margin-right: 30px;
 }
 
 .cancelButton {
     text-decoration: none;
+    background-color: #f5f5f5;
     text-align: center;
 }
 
