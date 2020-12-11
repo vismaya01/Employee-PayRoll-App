@@ -25,6 +25,7 @@
             <div class="row-content">
                 <label class="label text" for="name">Name</label>
                 <input class="input" type="text" name="name" id="name" placeholder="Enter name here" required>
+                <error-output class="text-error" for="text"></error-output>
             </div>
             <!-------UC 3--------->
             <div class="row-content">
@@ -81,7 +82,7 @@
             <!-------UC 5--------->
             <div class="row-content">
                 <label class="label text" for="startdate">Start Date</label>
-                <div>
+                <div id="date"> 
                     <select id="day" name="Day">
                        <option value="1">1</option>
                        <option value="2">2</option>
@@ -130,12 +131,14 @@
                         <option value="dec">December</option>
                     </select>
                         <select id="year" name="Year">
+                        <option value="2021">2021</option>
                         <option value="2020">2020</option>
                         <option value="2019">2019</option>
                         <option value="2018">2018</option>
                         <option value="2017">2017</option>
                         <option value="2016">2016</option>
                     </select>
+                    <error-output class="date-error" for="startdate"></error-output>
                 </div>
             </div>
             <!-------UC 6--------->
@@ -152,7 +155,7 @@
             </div>
         </form>
     </div>
-    <script type="text/javascript" src="../js/PayRoll-Form.js"></script>
-    <script type="text/javascript" src="../js/Employee-PayRoll-Data.js"></script>
+    <script src="../js/PayRoll-form.js"></script>
+    <script src="../js/Employee-PayRoll-Data.js"></script>
 </body>
 </html>
