@@ -1,12 +1,20 @@
 window.addEventListener('DOMContentLoaded', (event)=>{
+    empPayrollList = getEmployeePayrollDataFromStorage();
+    document.querySelector(".emp-count").textContent = empPayrollList.length;
     createInnerHtml();
+    localStorage.removeItem('editEmp');
 });
+
+const getEmployeePayrollDataFromStorage = () => { 
+    return localStorage.getItem('EmployeePayrollList') ?
+               JSON.parse(localStorage.getItem('EmployeePayrollList')) : [];
+}
 
 const createInnerHtml = () => {
     const headerHtml = "<th></th><th>Name</th><th>Gender</th><th>Department</th>" +
     "<th>Salary</th><th>Start Date</th><th>Actions</th>";
     let innerHtml = `${headerHtml}`;
-    let empPayrollList = creteEmployeePayrollJSON();
+    if(empPayrollList.length == 0) return;
     for (const empPayrollData of empPayrollList) {
         innerHtml = `${innerHtml}
      <tr>
@@ -27,37 +35,6 @@ const createInnerHtml = () => {
     `;
     }
     document.querySelector('#table-display').innerHTML = innerHtml;
-}
-
-const creteEmployeePayrollJSON = () => {
-    let empPayrollListLocal = [
-        {
-            _name: 'Akhil',
-            _gender: 'Male',
-            _department: [
-                'Engineering',
-                'Finance'
-            ],
-            _salary: '50000',
-            _startDate: '29 Oct 2020',
-            _note: '',
-            _id: new Date().getTime(),
-            _profilePic: '../assets/profile-images/Ellipse -2.png'
-        },
-        {
-            _name: 'Keerthi Kumar',
-            _gender: 'female',
-            _department: [
-                'HR'
-            ],
-            _salary: '600000',
-            _startDate: '29 Oct 2019',
-            _note: '',
-            _id: new Date().getTime() + 1,
-            _profilePic: '../assets/profile-images/Ellipse -1.png'
-        }
-    ];
-    return empPayrollListLocal;
 }
 
 const getDeptHtml = (deptList) => {
