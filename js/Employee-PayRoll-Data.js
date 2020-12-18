@@ -58,15 +58,13 @@ class EmployeePayrollData {
     }
     set startDate(startDate) {
         let now = new Date();
-        console.log(now);
-        console.log(startDate);
         if(startDate > now ) throw 'Start Date is a Future Date'
         this._startDate = startDate;
     }
 
     //method
     toString() {
-        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        const options = { year: 'numeric', month: 'short', day: 'numeric' };
         const empDate = !this.startDate ? "undefined" : this.startDate.toLocalDateString("en-US", options);
         return "id = "+this.id +", name=" + this.name + ", gender=" + this.gender + 
                 ", profilePic=" + this.profilePic + ", department=" + this.department +

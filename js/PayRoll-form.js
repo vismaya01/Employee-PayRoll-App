@@ -33,3 +33,56 @@ window.addEventListener('DOMContentLoaded', (event) => {
         output.textContent = salary.value;
     })
 });
+
+const save = () => {
+    try {
+        let employeePayrollData = createEmployeePayroll();
+    }
+    catch (e) {
+        return
+    }
+}
+
+
+const createEmployeePayroll = () => {
+    let employeePayrollData = new EmployeePayrollData();
+    try{
+        employeePayrollData.name = getInputValueById('#name');
+    }catch(e){
+        setTextValue('.text-error',e);
+        throw e;
+    }
+    employeePayrollData.profilePic = getSelectedValues('[name=profile]').pop();
+    employeePayrollData.gender = getSelectedValues('[name=gender]').pop();
+    employeePayrollData.department = getSelectedValues('[name="department"]');
+    employeePayrollData.salary = getInputValueById('#salary');
+    employeePayrollData.notes = getInputValueById('#notes');
+    let date = getInputValueById('#day')+"-"+getInputValueById('#month')+"-"+getInputValueById('#year');
+    try{
+        employeePayrollData.date =new Date(Date.parse(date));
+    }catch(e){
+        setTextValue('.date-error',e);
+        throw e;
+    }
+    alert(employeePayrollData.toString());
+    return employeePayrollData;
+}
+
+const getSelectedValues = (propertyValue) => {
+    let allItems = document.querySelectorAll(propertyValue);
+    let setItems = [];
+    allItems.forEach(item => {
+        if(item.checked) setItems.push(item.value);
+    });
+    return setItems;
+}
+
+const getInputValueById = (id) => {
+    let value = document.querySelector(id).value;
+    return value;
+}
+
+const getInputElementValue = (id) => {
+    let value = document.getElementById(id).value;
+    return value;
+}
