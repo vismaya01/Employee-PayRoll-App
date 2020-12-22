@@ -1,3 +1,4 @@
+let empPayrollList;
 window.addEventListener('DOMContentLoaded', (event)=>{
     empPayrollList = getEmployeePayrollDataFromStorage();
     document.querySelector(".emp-count").textContent = empPayrollList.length;
@@ -25,7 +26,7 @@ const createInnerHtml = () => {
         <td>${empPayrollData._gender}</td>
         <td>${getDeptHtml(empPayrollData._department)}</td>
         <td>${empPayrollData._salary}</td>
-        <td>${empPayrollData._startDate}</td>
+        <td>${stringifyDate(empPayrollData._startDate)}</td>
         <td>
             <img name="${empPayrollData._id}" onclick="remove(this)" alt="delete"
                 src="../assets/icons/delete-black-18dp.svg">
